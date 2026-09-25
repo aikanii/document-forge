@@ -1,0 +1,218 @@
+<!doctype html><html><head><meta charset="utf-8">
+<title>Hephaestus — design preview</title><style>
+body { margin:0; background:#F3ECDB; color:#2B2119;
+       font-family:'Times New Roman', 'Liberation Serif', serif; }
+header { padding:26px 40px 10px; display:flex; align-items:center; gap:18px; }
+h1 { font-size:34px; margin:0; letter-spacing:.5px; }
+.tag { color:#7A1F1F; font-size:11px; letter-spacing:6px; margin-top:2px; }
+.spacer { flex:1; }
+.search { border:1px solid #A9926B; background:#EBE2CC; padding:6px 12px;
+          font:italic 13px 'Times New Roman', serif; color:#6B5B47; width:220px; }
+.rule { height:2px; background:#A9926B; margin:6px 0 0; }
+main { padding:8px 44px 30px; }
+.section { display:flex; align-items:center; margin:26px 0 4px; }
+.section .bar { width:4px; height:20px; margin-right:10px; }
+.section h2 { font-size:16px; margin:0; letter-spacing:1px; }
+.section .line { flex:1; height:1px; background:#C9B99A; margin-left:14px; }
+.grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(200px,1fr));
+        gap:16px; margin-top:12px; }
+.card { background:#FAF6EA; border:1px solid #C9B99A; height:150px;
+        position:relative; text-align:center; padding-top:16px;
+        box-shadow:0 1px 0 #D8CBAE; }
+.card .tab { position:absolute; top:0; left:0; right:0; height:3px; }
+.card .ico { width:52px; height:52px; margin:4px auto 6px; border-radius:4px;
+             display:flex; align-items:center; justify-content:center;
+             font-size:26px; }
+.card h3 { font-size:14px; margin:2px 10px; }
+.card p { font-size:11px; color:#6B5B47; margin:2px 14px; line-height:1.35; }
+footer { background:#EBE2CC; border-top:1px solid #C9B99A; padding:6px 16px;
+         display:flex; font-size:11px; font-style:italic; color:#6B5B47; }
+footer .v { margin-left:auto; font-style:normal; }
+.note { margin:14px 44px 0; background:#F6E3C5; color:#6B4A12; padding:10px 14px;
+        font-size:12px; border:1px solid #A9926B; }
+</style></head><body>
+<div class="note">Static design preview of the Hephaestus home screen
+(“The Forge Floor”). The real application is a native desktop window built
+with Tkinter — run <code>python -m hephaestus</code> to use it.</div>
+<header><svg width="56" height="56" viewBox="0 0 56 56"><polygon points="54.3,28.0 55.2,31.6 51.8,34.4 53.5,38.6 50.5,41.0 48.2,43.5 47.8,47.8 43.1,47.7 41.4,51.3 38.3,52.9 34.4,52.0 31.6,55.7 28.0,53.5 24.6,53.7 20.8,54.8 18.6,50.8 14.3,51.7 11.9,48.9 10.2,45.8 5.8,45.0 6.3,40.5 3.5,38.2 1.7,35.1 3.5,31.2 0.2,28.0 2.4,24.6 3.3,21.4 2.3,17.3 6.6,15.6 6.5,11.5 9.1,9.1 12.8,8.2 14.0,3.8 18.3,4.6 21.2,2.7 24.4,0.7 28.0,3.4 31.6,0.7 34.8,2.7 37.7,4.6 42.0,3.8 43.2,8.2 46.9,9.1 49.5,11.5 49.4,15.6 53.8,17.3 52.7,21.4 53.6,24.6" fill="#8C2F24"/><circle cx="28.0" cy="28.0" r="19.040000000000003" fill="none" stroke="#F3ECDB" stroke-width="1.9600000000000002"/><text x="28.0" y="28.0" text-anchor="middle" dominant-baseline="central" fill="#F3ECDB" font-family="Times New Roman, serif" font-weight="bold" font-size="24.64">H</text></svg>
+  <div><h1>Hephaestus</h1><div class="tag">T H E &nbsp; D O C U M E N T &nbsp; F O R G E</div></div>
+  <div class="spacer"></div>
+  <div class="search">Seek a tool…</div>
+</header>
+<div class="rule"></div><main>
+<div class="section"><div class="bar" style="background:#7A1F1F"></div><h2 style="color:#7A1F1F">COMPOSE &amp; ARRANGE</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">＋</div>
+      <h3>Merge PDF</h3>
+      <p>Combine PDFs into one document, in your order</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">✂</div>
+      <h3>Split PDF</h3>
+      <p>Cut a PDF into ranges, single pages, or even chunks</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">▦</div>
+      <h3>Organize PDF</h3>
+      <p>Reorder, rotate, duplicate and remove pages visually</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">⟳</div>
+      <h3>Rotate PDF</h3>
+      <p>Turn all pages — or only the ones you choose</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">#</div>
+      <h3>Page Numbers</h3>
+      <p>Stamp page numbers with your own format and placement</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#7A1F1F"></div>
+      <div class="ico" style="color:#7A1F1F">W</div>
+      <h3>Watermark</h3>
+      <p>Stamp text or an image over your pages</p>
+    </div>
+</div>
+<div class="section"><div class="bar" style="background:#A87F2C"></div><h2 style="color:#A87F2C">OPTIMIZE &amp; RESTORE</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#A87F2C"></div>
+      <div class="ico" style="color:#A87F2C">⇲</div>
+      <h3>Compress PDF</h3>
+      <p>Shrink file size while keeping the document readable</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#A87F2C"></div>
+      <div class="ico" style="color:#A87F2C">⚒</div>
+      <h3>Repair PDF</h3>
+      <p>Salvage a damaged PDF and rebuild it page by page</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#A87F2C"></div>
+      <div class="ico" style="color:#A87F2C">◉</div>
+      <h3>OCR PDF</h3>
+      <p>Make scanned documents searchable with Tesseract</p>
+    </div>
+</div>
+<div class="section"><div class="bar" style="background:#3F6B35"></div><h2 style="color:#3F6B35">CONVERT TO PDF</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#3F6B35"></div>
+      <div class="ico" style="color:#3F6B35">W</div>
+      <h3>Word to PDF</h3>
+      <p>Convert DOC, DOCX, ODT and RTF documents</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#3F6B35"></div>
+      <div class="ico" style="color:#3F6B35">P</div>
+      <h3>PowerPoint to PDF</h3>
+      <p>Convert PPT, PPTX and ODP presentations</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#3F6B35"></div>
+      <div class="ico" style="color:#3F6B35">X</div>
+      <h3>Excel to PDF</h3>
+      <p>Convert XLS, XLSX, ODS and CSV spreadsheets</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#3F6B35"></div>
+      <div class="ico" style="color:#3F6B35">▧</div>
+      <h3>JPG to PDF</h3>
+      <p>Bind images into a single PDF document</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#3F6B35"></div>
+      <div class="ico" style="color:#3F6B35">&lt;/&gt;</div>
+      <h3>HTML to PDF</h3>
+      <p>Save web pages as polished PDF documents</p>
+    </div>
+</div>
+<div class="section"><div class="bar" style="background:#33566B"></div><h2 style="color:#33566B">CONVERT FROM PDF</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#33566B"></div>
+      <div class="ico" style="color:#33566B">W</div>
+      <h3>PDF to Word</h3>
+      <p>Turn PDFs into editable DOCX documents</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#33566B"></div>
+      <div class="ico" style="color:#33566B">P</div>
+      <h3>PDF to PowerPoint</h3>
+      <p>Turn PDFs into editable PPTX presentations</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#33566B"></div>
+      <div class="ico" style="color:#33566B">X</div>
+      <h3>PDF to Excel</h3>
+      <p>Extract tables from PDFs into XLSX spreadsheets</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#33566B"></div>
+      <div class="ico" style="color:#33566B">▨</div>
+      <h3>PDF to JPG</h3>
+      <p>Render every page as a JPG or PNG image</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#33566B"></div>
+      <div class="ico" style="color:#33566B">A</div>
+      <h3>PDF to PDF/A</h3>
+      <p>Archive-grade conversion for long-term preservation</p>
+    </div>
+</div>
+<div class="section"><div class="bar" style="background:#5E4470"></div><h2 style="color:#5E4470">SECURE &amp; SIGN</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#5E4470"></div>
+      <div class="ico" style="color:#5E4470"></div>
+      <h3>Protect PDF</h3>
+      <p>Encrypt with a password and set permissions</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#5E4470"></div>
+      <div class="ico" style="color:#5E4470"></div>
+      <h3>Unlock PDF</h3>
+      <p>Remove password protection from a PDF you own</p>
+    </div>
+
+    <div class="card">
+      <div class="tab" style="background:#5E4470"></div>
+      <div class="ico" style="color:#5E4470">✒</div>
+      <h3>Sign PDF</h3>
+      <p>Draw, type or import a signature and stamp it on pages</p>
+    </div>
+</div>
+<div class="section"><div class="bar" style="background:#8A5A2B"></div><h2 style="color:#8A5A2B">EDIT &amp; ANNOTATE</h2><div class="line"></div></div><div class="grid">
+
+    <div class="card">
+      <div class="tab" style="background:#8A5A2B"></div>
+      <div class="ico" style="color:#8A5A2B">✎</div>
+      <h3>Edit PDF</h3>
+      <p>Add text and images to any page</p>
+    </div>
+</div>
+</main><footer><span>23 tools at the anvil ·
+everything runs locally on this machine</span><span class="v">v1.0.0</span>
+</footer></body></html>
