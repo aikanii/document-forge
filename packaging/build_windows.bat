@@ -23,8 +23,9 @@ if errorlevel 1 goto :fail
 echo.
 echo  ============================================================
 echo   BUILD COMPLETE
-echo   Your app is in:  dist\Hephaestus\Hephaestus.exe
-echo   Copy the whole dist\Hephaestus folder anywhere you like.
+echo   Your app is ONE portable file:  dist\Hephaestus.exe
+echo   Copy just that file anywhere - Desktop, USB stick, e-mail.
+echo   It needs no installer and no companion folders.
 echo  ============================================================
 pause
 exit /b 0

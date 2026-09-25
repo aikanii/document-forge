@@ -1,13 +1,19 @@
 # -*- mode: python ; coding: utf-8 -*-
-"""PyInstaller spec for Hephaestus — builds a desktop app.
+"""PyInstaller spec for Hephaestus — SINGLE-FILE portable executable.
 
 Usage (from the project root):
     pyinstaller packaging/Hephaestus.spec --noconfirm
 
-Produces dist/Hephaestus/ (one-folder build; faster startup than --onefile).
+Produces ONE self-contained file:  dist/Hephaestus.exe  (Windows)
+                                    dist/Hephaestus      (Linux)
+                                    dist/Hephaestus.app  (macOS)
+
+Why onefile?  Stakeholders kept copying only the .exe of the older
+folder-build and hitting "Failed to load Python DLL ... _internal\python313.dll".
+A single-file build has no sibling folders to lose: the exe unpacks itself to a
+private temp directory at launch and cleans up afterwards.
 """
 
-import os
 import sys
 from pathlib import Path
 
@@ -47,8 +53,10 @@ pyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)
 exe = EXE(
     pyz,
     a.scripts,
+    a.binaries,          # <- everything INSIDE the exe = portable single file
+    a.zipfiles,
+    a.datas,
     [],
-    exclude_binaries=True,
     name="Hephaestus",
     debug=False,
     bootloader_ignore_signals=False,
@@ -64,21 +72,10 @@ exe = EXE(
         str(ASSETS / "icon.icns") if (ASSETS / "icon.icns").exists() else None),
 )
 
-coll = COLLECT(
-    exe,
-    a.binaries,
-    a.zipfiles,
-    a.datas,
-    strip=False,
-    upx=True,
-    upx_exclude=[],
-    name="Hephaestus",
-)
-
-# macOS .app bundle
+# macOS .app bundle (wraps the single-file exe)
 if sys.platform == "darwin":
     app = BUNDLE(
-        coll,
+        exe,
         name="Hephaestus.app",
         icon=str(ASSETS / "icon.icns") if (ASSETS / "icon.icns").exists() else None,
         bundle_identifier="ai.arena.hephaestus",

@@ -26,6 +26,6 @@ echo "[4/4] Building Hephaestus.app ..."
 echo
 echo " ============================================================"
 echo "  BUILD COMPLETE"
-echo "  Your app is at:  dist/Hephaestus.app"
+echo "  Your app is at:  dist/Hephaestus.app  (self-contained bundle)"
 echo "  (drag it into /Applications)"
 echo " ============================================================"

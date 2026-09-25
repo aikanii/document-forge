@@ -24,5 +24,6 @@ echo "[3/3] Building the Hephaestus executable ..."
 echo
 echo " ============================================================"
 echo "  BUILD COMPLETE"
-echo "  Run it with:  dist/Hephaestus/Hephaestus"
+echo "  Your app is ONE portable file:  dist/Hephaestus"
+echo "  Run it directly or copy it anywhere:  ./dist/Hephaestus"
 echo " ============================================================"

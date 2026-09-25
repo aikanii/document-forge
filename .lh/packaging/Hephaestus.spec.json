@@ -3,11 +3,15 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 1,
             "patches": [
                 {
                     "date": 1790306830676,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1790311938363,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,20 @@\n # -*- mode: python ; coding: utf-8 -*-\n-\"\"\"PyInstaller spec for Hephaestus — builds a desktop app.\n+\"\"\"PyInstaller spec for Hephaestus — SINGLE-FILE portable executable.\n \n Usage (from the project root):\n     pyinstaller packaging/Hephaestus.spec --noconfirm\n \n-Produces dist/Hephaestus/ (one-folder build; faster startup than --onefile).\n+Produces ONE self-contained file:  dist/Hephaestus.exe  (Windows)\n+                                    dist/Hephaestus      (Linux)\n+                                    dist/Hephaestus.app  (macOS)\n+\n+Why onefile?  Stakeholders kept copying only the .exe of the older\n+folder-build and hitting \"Failed to load Python DLL ... _internal\\python313.dll\".\n+A single-file build has no sibling folders to lose: the exe unpacks itself to a\n+private temp directory at launch and cleans up afterwards.\n \"\"\"\n \n-import os\n import sys\n from pathlib import Path\n \n block_cipher = None\n@@ -46,10 +52,12 @@\n \n exe = EXE(\n     pyz,\n     a.scripts,\n+    a.binaries,          # <- everything INSIDE the exe = portable single file\n+    a.zipfiles,\n+    a.datas,\n     [],\n-    exclude_binaries=True,\n     name=\"Hephaestus\",\n     debug=False,\n     bootloader_ignore_signals=False,\n     strip=False,\n@@ -63,23 +71,12 @@\n     icon=str(ASSETS / \"icon.ico\") if sys.platform == \"win32\" else (\n         str(ASSETS / \"icon.icns\") if (ASSETS / \"icon.icns\").exists() else None),\n )\n \n-coll = COLLECT(\n-    exe,\n-    a.binaries,\n-    a.zipfiles,\n-    a.datas,\n-    strip=False,\n-    upx=True,\n-    upx_exclude=[],\n-    name=\"Hephaestus\",\n-)\n-\n-# macOS .app bundle\n+# macOS .app bundle (wraps the single-file exe)\n if sys.platform == \"darwin\":\n     app = BUNDLE(\n-        coll,\n+        exe,\n         name=\"Hephaestus.app\",\n         icon=str(ASSETS / \"icon.icns\") if (ASSETS / \"icon.icns\").exists() else None,\n         bundle_identifier=\"ai.arena.hephaestus\",\n         version=\"1.0.0\",\n"
                 }
             ],
             "date": 1790306830676,

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "packaging/build_macos.sh",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1790312018917,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1790312018917,
+            "name": "Commit-0",
+            "content": "#!/usr/bin/env bash\n# ============================================================\n#  Hephaestus — macOS app bundle build script\n#  Requires: Xcode command line tools, Python 3.10+,\n#  and (optionally) LibreOffice + Tesseract for full features.\n# ============================================================\nset -e\ncd \"$(dirname \"$0\")/..\"\n\necho \"[1/4] Checking python3 ...\"\nPYTHON=\"${PYTHON:-python3}\"\n\necho \"[2/4] Installing Python dependencies ...\"\n\"$PYTHON\" -m pip install --upgrade pip\n\"$PYTHON\" -m pip install -r requirements.txt pyinstaller\n\necho \"[3/4] Building the .icns icon (if missing) ...\"\nif [ ! -f assets/icon.icns ]; then\n  iconutil -c icns assets/icon.iconset -o assets/icon.icns || \\\n    echo \"  (iconutil unavailable — building without a custom .icns)\"\nfi\n\necho \"[4/4] Building Hephaestus.app ...\"\n\"$PYTHON\" -m PyInstaller packaging/Hephaestus.spec --noconfirm\n\necho\necho \" ============================================================\"\necho \"  BUILD COMPLETE\"\necho \"  Your app is at:  dist/Hephaestus.app  (self-contained bundle)\"\necho \"  (drag it into /Applications)\"\necho \" ============================================================\"\n"
+        }
+    ]
+}
