@@ -1,0 +1,18 @@
+{
+    "sourceFile": "packaging/Hephaestus.spec",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1790306830676,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1790306830676,
+            "name": "Commit-0",
+            "content": "# -*- mode: python ; coding: utf-8 -*-\n\"\"\"PyInstaller spec for Hephaestus — builds a desktop app.\n\nUsage (from the project root):\n    pyinstaller packaging/Hephaestus.spec --noconfirm\n\nProduces dist/Hephaestus/ (one-folder build; faster startup than --onefile).\n\"\"\"\n\nimport os\nimport sys\nfrom pathlib import Path\n\nblock_cipher = None\n\nROOT = Path(SPECPATH).parent                 # project root (spec lives in packaging/)\nASSETS = ROOT / \"assets\"\n\na = Analysis(\n    [str(ROOT / \"run_hephaestus.py\")],\n    pathex=[str(ROOT)],\n    binaries=[],\n    datas=[\n        (str(ASSETS / \"icon_64.png\"), \"assets\"),\n        (str(ASSETS / \"icon_128.png\"), \"assets\"),\n        (str(ASSETS / \"icon_256.png\"), \"assets\"),\n    ] + ([(str(ASSETS / \"icon.ico\"), \"assets\")]\n         if (ASSETS / \"icon.ico\").exists() else []),\n    hiddenimports=[\n        \"pymupdf\", \"fitz\", \"pypdf\", \"PIL\", \"pytesseract\",\n        \"tkinter\", \"tkinter.ttk\", \"tkinter.filedialog\", \"tkinter.messagebox\",\n        \"tkinter.font\", \"tkinter.colorchooser\",\n    ],\n    hookspath=[],\n    hooksconfig={},\n    runtime_hooks=[],\n    excludes=[\"matplotlib\", \"numpy\", \"scipy\", \"pandas\", \"pytest\", \"IPython\",\n              \"jupyter\", \"notebook\", \"PyQt5\", \"PyQt6\", \"PySide2\", \"PySide6\"],\n    win_no_prefer_redirects=False,\n    win_private_assemblies=False,\n    cipher=block_cipher,\n    noarchive=False,\n)\n\npyz = PYZ(a.pure, a.zipped_data, cipher=block_cipher)\n\nexe = EXE(\n    pyz,\n    a.scripts,\n    [],\n    exclude_binaries=True,\n    name=\"Hephaestus\",\n    debug=False,\n    bootloader_ignore_signals=False,\n    strip=False,\n    upx=True,\n    console=False,                       # GUI app: no terminal window\n    disable_windowed_traceback=False,\n    argv_emulation=False,\n    target_arch=None,\n    codesign_identity=None,\n    entitlements_file=None,\n    icon=str(ASSETS / \"icon.ico\") if sys.platform == \"win32\" else (\n        str(ASSETS / \"icon.icns\") if (ASSETS / \"icon.icns\").exists() else None),\n)\n\ncoll = COLLECT(\n    exe,\n    a.binaries,\n    a.zipfiles,\n    a.datas,\n    strip=False,\n    upx=True,\n    upx_exclude=[],\n    name=\"Hephaestus\",\n)\n\n# macOS .app bundle\nif sys.platform == \"darwin\":\n    app = BUNDLE(\n        coll,\n        name=\"Hephaestus.app\",\n        icon=str(ASSETS / \"icon.icns\") if (ASSETS / \"icon.icns\").exists() else None,\n        bundle_identifier=\"ai.arena.hephaestus\",\n        version=\"1.0.0\",\n        info_plist={\n            \"NSHighResolutionCapable\": True,\n            \"CFBundleShortVersionString\": \"1.0.0\",\n            \"NSHumanReadableCopyright\": \"Hephaestus — The Document Forge\",\n        },\n    )\n"
+        }
+    ]
+}

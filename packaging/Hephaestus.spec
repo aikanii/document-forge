@@ -13,7 +13,7 @@ from pathlib import Path
 
 block_cipher = None
 
-ROOT = Path(SPECPATH).parent.parent          # project root
+ROOT = Path(SPECPATH).parent                 # project root (spec lives in packaging/)
 ASSETS = ROOT / "assets"
 
 a = Analysis(

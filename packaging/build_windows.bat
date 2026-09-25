@@ -31,6 +31,6 @@ exit /b 0
 
 :fail
 echo.
-echo  BUILD FAILED — see the messages above.
+echo  BUILD FAILED - see the messages above.
 pause
 exit /b 1
